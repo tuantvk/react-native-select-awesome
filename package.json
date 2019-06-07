@@ -1,0 +1,27 @@
+{
+  "name": "react-native-select",
+  "version": "0.0.1",
+  "description": "react native select for Android and iOS",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com"
+  },
+  "keywords": [
+    "react native select",
+    "react native",
+    "react",
+    "react native picker"
+  ],
+  "author": "TuanTVK",
+  "license": "MIT",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "react": "16.2.0",
+    "react-native": "0.53.0"
+  },
+  "devDependencies": {
+    "babel-preset-react-native": "4.0.1"
+  }
+}
