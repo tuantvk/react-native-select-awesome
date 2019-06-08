@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+// import SplashScreen from 'react-native-splash-screen';
 
 const DATAS = [
   { id: 1, label: 'JavaScript', value: 'js' },
@@ -17,7 +18,14 @@ const DATAS = [
 export class RNSelect extends PureComponent {
   state = {
     isPicker: false,
+    select: {},
+    searchText: '',
   }
+
+  componentDidMount = () => {
+    // SplashScreen.hide()
+  };
+
 
   static defaultProps = {
     value: '',
@@ -33,22 +41,36 @@ export class RNSelect extends PureComponent {
     isPicker: !this.state.isPicker
   });
 
-  _selectValue = () => {
+  _selectValue = select => {
+    this.setState({ select, searchText: select.label });
     this._modalPicker();
+  }
+
+  _changeText = searchText => {
+    this.setState({ searchText });
+    // let searchs = DATAS.map(d => d.toUpperCase().indexOf())
   }
 
   render() {
     let props = this.props;
-    const { isPicker } = this.state;
+    const { isPicker, select, searchText } = this.state;
+    // console.warn('textInput ', this.textInput)
     return (
-      <Fragment>
+      <View style={{ margin: 25 }}>
+        {/* <Fragment> */}
         <TouchableOpacity activeOpacity={props.opacity} onPress={this._modalPicker}>
           <TextInput
-            value={props.value}
+            ref={ref => this.textInput = ref}
+            value={isPicker ? searchText : select.label}
             placeholder={props.placeholder}
-            editable={false}
+            editable={isPicker}
+            onChangeText={text => this._changeText(text)}
+            // autoFocus={isPicker}
+            style={{ color: '#000', fontSize: 16, borderBottomColor: '#cacaca', borderBottomWidth: 1, padding: 5 }}
           />
         </TouchableOpacity>
+        <Text>{isPicker ? "up" : "down"}</Text>
+        {/* </Fragment> */}
         {isPicker &&
           <View style={[styles.picker, props.stylePicker]}>
             {
@@ -63,7 +85,7 @@ export class RNSelect extends PureComponent {
             }
           </View>
         }
-      </Fragment>
+      </View>
     )
   }
 }
@@ -76,8 +98,9 @@ const styles = StyleSheet.create({
     padding: 10
   },
   item: {
+    color: '#000',
     marginBottom: 12,
-    fontSize: 15
+    fontSize: 16
   }
 });
 
