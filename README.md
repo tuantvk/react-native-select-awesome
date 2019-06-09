@@ -68,7 +68,7 @@ const LANGS = [
   {id: 5, label: 'PHP', value: 'php'},
 ];
 
-const itemCustom = {color: 'f00' };
+const itemCustom = {color: '#146eff' };
 
 // Later on in your component
 export default class RNSelectExample extends Component {
