@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -6,10 +6,16 @@ import {
   StyleSheet,
 } from 'react-native';
 import {
-  string, array, element, object, number, func
+  string,
+  array,
+  element,
+  object,
+  number,
+  func,
+  oneOfType,
 } from 'prop-types';
 
-export class RNSelect extends PureComponent {
+export class RNSelect extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +36,8 @@ export class RNSelect extends PureComponent {
     stylePicker: {},
     notFind: 'Not find',
     selectValue: () => { },
-    rightIcon: null
+    rightIcon: null,
+    label: 'label'
   };
 
   _modalPicker = () => {
@@ -44,16 +51,19 @@ export class RNSelect extends PureComponent {
   }
 
   _selectValue = select => {
-    this.setState({ select, searchText: select.label });
+    this.setState({
+      select,
+      searchText: select[this.props.label]
+    });
     this._textInput.blur();
     this.props.selectValue(select);
   }
 
   _changeText = searchText => {
-    const { datas } = this.props;
+    const { datas, label } = this.props;
     let dataSearch = [];
     datas.forEach(x => {
-      if (x.label.trim().toUpperCase()
+      if (x[label].trim().toUpperCase()
         .includes(searchText.trim().toUpperCase())) {
         dataSearch.push(x);
       }
@@ -66,7 +76,7 @@ export class RNSelect extends PureComponent {
   }
 
   _listSelect = () => {
-    const { notFind, styleItem } = this.props;
+    const { notFind, styleItem, label } = this.props;
     const { searchText, datas } = this.state;
     if (searchText.length > 0 && datas.length <= 0) {
       return <Text>{notFind}</Text>
@@ -77,7 +87,7 @@ export class RNSelect extends PureComponent {
           style={[styles.item, styleItem]}
           onPress={() => this._selectValue(d)}
         >
-          {d.label}
+          {d[label]}
         </Text>
       ))
   }
@@ -88,40 +98,48 @@ export class RNSelect extends PureComponent {
   }
 
   render() {
-    const { placeholder, styleInput, stylePicker, rightIcon } = this.props;
-    const { isPicker, select, searchText } = this.state;
+    const {
+      placeholder,
+      styleInput,
+      stylePicker,
+      rightIcon,
+      label,
+    } = this.props;
+    const {
+      isPicker,
+      select,
+      searchText
+    } = this.state;
     return (
-      <View>
-        <View style={styles.select}>
-          <View style={styles.row}>
-            <TextInput
-              ref={(input) => { this._textInput = input; }}
-              value={isPicker ? searchText : select.label}
-              placeholder={placeholder}
-              onChangeText={text => this._changeText(text)}
-              underlineColorAndroid="transparent"
-              onFocus={this._modalPicker}
-              onBlur={this._touchOutView}
-              style={[
-                styles.input,
-                { width: rightIcon ? '95%' : '100%' },
-                { ...styleInput }
-              ]}
-            />
-            {
-              rightIcon ?
-                <View style={{ width: '5%', marginTop: 10 }}>
-                  {rightIcon}
-                </View>
-                : null
-            }
-          </View>
-          {isPicker &&
-            <View style={[styles.picker, stylePicker]}>
-              {this._listSelect()}
-            </View>
+      <View style={styles.select}>
+        <View style={styles.row}>
+          <TextInput
+            ref={(input) => { this._textInput = input; }}
+            value={isPicker ? searchText : select[label]}
+            placeholder={placeholder}
+            onChangeText={text => this._changeText(text)}
+            underlineColorAndroid="transparent"
+            onFocus={this._modalPicker}
+            onBlur={this._touchOutView}
+            style={[
+              styles.input,
+              { width: rightIcon ? '95%' : '100%' },
+              { ...styleInput }
+            ]}
+          />
+          {
+            rightIcon ?
+              <View style={styles.rightIcon}>
+                {rightIcon}
+              </View>
+              : null
           }
         </View>
+        {isPicker &&
+          <View style={[styles.picker, stylePicker]}>
+            {this._listSelect()}
+          </View>
+        }
       </View>
     )
   }
@@ -130,8 +148,9 @@ export class RNSelect extends PureComponent {
 RNSelect.propTypes = {
   value: string,
   placeholder: string,
-  width: string,
-  height: number,
+  label: string,
+  width: oneOfType([string, number]),
+  height: oneOfType([string, number]),
   styleInput: object,
   styleItem: object,
   stylePicker: object,
@@ -167,6 +186,10 @@ const styles = StyleSheet.create({
     borderBottomColor: '#cacaca',
     borderBottomWidth: 1,
     paddingVertical: 5
+  },
+  rightIcon: {
+    width: '5%',
+    marginTop: 10
   }
 });
 

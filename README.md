@@ -43,6 +43,7 @@ var RNSelect = require('react-native-select-awesome');
 | datas | specify the options the user can select from | `[]` | `array` **isRequired** |
 | value  | control the current value  | `""`  | `string` |
 | placeholder | change the text displayed when no option is selected | `Select value` | `string` |
+| label | customize label for select item | `label` | `string` |
 | width | width of input | `100%` | `string` |
 | height | height of input | `50` | `number` |
 | styleInput | style customize for input | `{}` | `object` |

@@ -7,3 +7,6 @@ app.json
 Example
 node_modules
 assets
+.babelrc
+.flowconfig
+.buckconfig

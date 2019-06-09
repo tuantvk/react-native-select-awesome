@@ -1,6 +1,6 @@
 {
   "name": "react-native-select-awesome",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "react native select awesome for Android and iOS",
   "main": "index.js",
   "repository": {
@@ -13,7 +13,9 @@
     "react native select awesome",
     "react native",
     "react",
-    "react native picker"
+    "react native picker",
+    "react picker",
+    "react select"
   ],
   "author": "TuanTVK",
   "license": "MIT",
