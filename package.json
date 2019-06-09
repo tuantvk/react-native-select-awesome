@@ -1,15 +1,16 @@
 {
-  "name": "react-native-select",
+  "name": "react-native-select-awesome",
   "version": "0.0.2",
   "description": "react native select for Android and iOS",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tuantvk/react-native-select",
-    "issues": "https://github.com/tuantvk/react-native-select/issues"
+    "url": "https://github.com/tuantvk/react-native-select-awesome",
+    "issues": "https://github.com/tuantvk/react-native-select-awesome/issues"
   },
   "keywords": [
     "react native select",
+    "react native select awesome",
     "react native",
     "react",
     "react native picker"
