@@ -1,6 +1,6 @@
 {
   "name": "react-native-select",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react native select for Android and iOS",
   "main": "index.js",
   "repository": {
