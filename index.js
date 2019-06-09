@@ -1,4 +1,3 @@
-import { AppRegistry } from 'react-native';
-import App from './App';
+import RNSelect from './RNSelect';
 
-AppRegistry.registerComponent('reactNativeSelect', () => App);
+export default RNSelect;
