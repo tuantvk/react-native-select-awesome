@@ -18,8 +18,9 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react": "16.2.0",
-    "react-native": "0.53.0"
+    "prop-types": "^15.7.2",
+    "react": "^16.2.0",
+    "react-native": "^0.53.0"
   },
   "devDependencies": {
     "babel-preset-react-native": "4.0.1"
