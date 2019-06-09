@@ -1,7 +1,7 @@
 # React Native Select Awesome - Library for React Native on platform Android and iOS
 
-![Demo](https://github.com/tuantvk/react-native-select-awesome/assets/example_1.jpg)
-![Demo](https://github.com/tuantvk/react-native-select-awesome/assets/example_1.jpg)
+![Demo](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_1.jpg)
+![Demo](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_1.jpg)
 
 # Table of Content
 
