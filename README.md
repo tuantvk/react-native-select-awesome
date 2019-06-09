@@ -1,43 +1,43 @@
-# React Native Select - Library for React Native on platform Android and iOS
+# React Native Select Awesome - Library for React Native on platform Android and iOS
 
 # Table of Content
 
-1. [What is React Native Select?](#1-what-is-react-native-select)
+1. [What is React Native Select Awesome?](#1-what-is-react-native-select-awesome)
 2. [Getting Started](#2-getting-started)
 3. [Props](#3-props)
 4. [Example](#4-example)
 5. [License](#5-license)
 
-## 1. What is React Native Select?
+## 1. What is React Native Select Awesome?
 
-React Native Select ingenious and dynamic front-end framework created by TuanTVK to build cross platform Android & iOS mobile apps using ready to use generic components of React Native.
+React Native Select Awesome ingenious and dynamic front-end framework created by TuanTVK to build cross platform Android & iOS mobile apps using ready to use generic components of React Native.
 
 ## 2. Getting Started
 
 ### Install
 
 ```shell
-npm install react-native-select --save
+npm install react-native-select-awesome --save
 
 # or use yarn
 
-yarn add react-native-select
+yarn add react-native-select-awesome
 ```
 
 Import
 ```ES6
-import RNSelect from 'react-native-select';
+import RNSelect from 'react-native-select-awesome';
 ```
 or 
 ```ES5
-var RNSelect = require('react-native-select');
+var RNSelect = require('react-native-select-awesome');
 ```
 
 ## 3. Props
 
 | Props  | Description | Default | PropTypes |
 | ------------- | ------------- | ------------- | ------------- |
-| **datas** | specify the options the user can select from | `[]` | `array` **isRequired** |
+| datas | specify the options the user can select from | `[]` | `array` **isRequired** |
 | value  | control the current value  | `""`  | `string` |
 | placeholder | change the text displayed when no option is selected | `Select value` | `string` |
 | width | width of input | `100%` | `string` |
@@ -55,7 +55,7 @@ var RNSelect = require('react-native-select');
 // At the top of your file
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import RNSelect from 'react-native-select';
+import RNSelect from 'react-native-select-awesome';
 
 const LANGS = [
   {id: 1, label: 'Java', value: 'java'},
