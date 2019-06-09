@@ -4,7 +4,7 @@
   "description": "react native select for Android and iOS",
   "repository": {
     "type": "git",
-    "url": "git@github.com"
+    "url": "git@github.com/tuantvk/react-native-select"
   },
   "keywords": [
     "react native select",
