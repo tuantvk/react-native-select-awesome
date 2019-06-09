@@ -1,7 +1,7 @@
 {
   "name": "react-native-select-awesome",
-  "version": "0.0.4",
-  "description": "react native select for Android and iOS",
+  "version": "0.0.6",
+  "description": "react native select awesome for Android and iOS",
   "main": "index.js",
   "repository": {
     "type": "git",

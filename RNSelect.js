@@ -4,7 +4,6 @@ import {
   Text,
   TextInput,
   StyleSheet,
-  TouchableOpacity
 } from 'react-native';
 import {
   string, array, element, object, number, func
@@ -46,7 +45,6 @@ export class RNSelect extends PureComponent {
 
   _selectValue = select => {
     this.setState({ select, searchText: select.label });
-    this._modalPicker();
     this._textInput.blur();
     this.props.selectValue(select);
   }
@@ -93,12 +91,8 @@ export class RNSelect extends PureComponent {
     const { placeholder, styleInput, stylePicker, rightIcon } = this.props;
     const { isPicker, select, searchText } = this.state;
     return (
-      <TouchableOpacity
-        onPress={this._touchOutView}
-        style={styles.absolute}
-        activeOpacity={1}
-      >
-        <View>
+      <View>
+        <View style={styles.select}>
           <View style={styles.row}>
             <TextInput
               ref={(input) => { this._textInput = input; }}
@@ -106,8 +100,8 @@ export class RNSelect extends PureComponent {
               placeholder={placeholder}
               onChangeText={text => this._changeText(text)}
               underlineColorAndroid="transparent"
-              pointerEvents="none"
-              onTouchStart={this._modalPicker}
+              onFocus={this._modalPicker}
+              onBlur={this._touchOutView}
               style={[
                 styles.input,
                 { width: rightIcon ? '95%' : '100%' },
@@ -128,7 +122,7 @@ export class RNSelect extends PureComponent {
             </View>
           }
         </View>
-      </TouchableOpacity>
+      </View>
     )
   }
 }
@@ -148,6 +142,9 @@ RNSelect.propTypes = {
 }
 
 const styles = StyleSheet.create({
+  select: {
+    zIndex: 99,
+  },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between'
@@ -155,7 +152,7 @@ const styles = StyleSheet.create({
   picker: {
     borderColor: '#cacaca',
     borderWidth: 1,
-    margin: 5,
+    marginVertical: 5,
     padding: 10
   },
   item: {
@@ -163,23 +160,13 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     fontSize: 16
   },
-  absolute: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'transparent',
-    zIndex: -1,
-    marginVertical: 5
-  },
   input: {
     height: 50,
     color: '#000',
     fontSize: 16,
     borderBottomColor: '#cacaca',
     borderBottomWidth: 1,
-    padding: 5
+    paddingVertical: 5
   }
 });
 

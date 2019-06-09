@@ -1,5 +1,8 @@
 # React Native Select Awesome - Library for React Native on platform Android and iOS
 
+![Demo](https://github.com/tuantvk/react-native-select-awesome/assets/example_1.jpg)
+![Demo](https://github.com/tuantvk/react-native-select-awesome/assets/example_1.jpg)
+
 # Table of Content
 
 1. [What is React Native Select Awesome?](#1-what-is-react-native-select-awesome)
@@ -74,7 +77,7 @@ export default class RNSelectExample extends Component {
       <View>
         <RNSelect 
           datas={LANGS}
-          notFind="Select lang"
+          placeholder="Select lang"
           height={60}
           styleItem={itemCustom}
         />
