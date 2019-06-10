@@ -8,12 +8,17 @@ import {
 import {
   string,
   array,
-  element,
   object,
   number,
   func,
   oneOfType,
+  bool,
 } from 'prop-types';
+import {
+  RightIcon,
+  SelectItem,
+  SelectItemCustom,
+} from "./components";
 
 export class RNSelect extends React.PureComponent {
   constructor(props) {
@@ -34,11 +39,22 @@ export class RNSelect extends React.PureComponent {
     styleInput: {},
     styleItem: {},
     stylePicker: {},
+    styleNotFind: {},
     notFind: 'Not find',
     selectValue: () => { },
-    rightIcon: null,
-    label: 'label'
+    rightIcon: () => { },
+    label: 'label',
+    isDisabled: true,
+    clearValue: () => { },
+    customItem: null
   };
+
+  _clearValue = () => {
+    this.setState({
+      select: {},
+      searchText: ''
+    });
+  }
 
   _modalPicker = () => {
     const { isPicker } = this.state;
@@ -76,19 +92,39 @@ export class RNSelect extends React.PureComponent {
   }
 
   _listSelect = () => {
-    const { notFind, styleItem, label } = this.props;
+    const {
+      notFind,
+      styleItem,
+      label,
+      styleNotFind,
+      customItem,
+    } = this.props;
     const { searchText, datas } = this.state;
     if (searchText.length > 0 && datas.length <= 0) {
-      return <Text>{notFind}</Text>
+      return <Text style={styleNotFind}>{notFind}</Text>
     }
     return (
-      datas.map((d, i) =>
-        <Text key={i}
-          style={[styles.item, styleItem]}
-          onPress={() => this._selectValue(d)}
-        >
-          {d[label]}
-        </Text>
+      datas.map((d, i) => {
+        if (customItem) {
+          return (
+            <SelectItemCustom
+              key={i}
+              item={d}
+              customItem={customItem}
+              onPress={() => this._selectValue(d)}
+            />
+          )
+        }
+        return (
+          <SelectItem
+            key={i}
+            style={[styles.item, styleItem]}
+            onPress={() => this._selectValue(d)}
+            item={d}
+            label={label}
+          />
+        )
+      }
       ))
   }
 
@@ -104,6 +140,7 @@ export class RNSelect extends React.PureComponent {
       stylePicker,
       rightIcon,
       label,
+      isDisabled,
     } = this.props;
     const {
       isPicker,
@@ -121,6 +158,7 @@ export class RNSelect extends React.PureComponent {
             underlineColorAndroid="transparent"
             onFocus={this._modalPicker}
             onBlur={this._touchOutView}
+            editable={isDisabled}
             style={[
               styles.input,
               { width: rightIcon ? '95%' : '100%' },
@@ -128,11 +166,11 @@ export class RNSelect extends React.PureComponent {
             ]}
           />
           {
-            rightIcon ?
-              <View style={styles.rightIcon}>
-                {rightIcon}
-              </View>
-              : null
+            rightIcon &&
+            <RightIcon
+              clearValue={this._clearValue}
+              rightIcon={rightIcon}
+            />
           }
         </View>
         {isPicker &&
@@ -154,10 +192,14 @@ RNSelect.propTypes = {
   styleInput: object,
   styleItem: object,
   stylePicker: object,
+  styleNotFind: object,
   datas: array.isRequired,
   notFind: string,
   selectValue: func,
-  rightIcon: element
+  rightIcon: func,
+  isDisabled: bool,
+  clearValue: func,
+  customItem: func,
 }
 
 const styles = StyleSheet.create({
@@ -187,10 +229,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingVertical: 5
   },
-  rightIcon: {
-    width: '5%',
-    marginTop: 10
-  }
 });
 
 export default RNSelect;

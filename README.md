@@ -50,10 +50,16 @@ var RNSelect = require('react-native-select-awesome');
 | styleItem | style customize for item select | `{}` | `object` |
 | stylePicker | style customize container picker | `{}` | `object` |
 | notFind | change the text displayed when no find value  | `Not Find` | `string` |
-| selectValue | return value when select | `() => { }` | `func` |
-| rightIcon | customize icon or text right | `null` | `element` |
+| styleNotFind | style customize for text notFind | `{}` | `object` |
+| isDisabled | whether the input is disabled | `true` | `bool` |
+| selectValue | return value when you use *rightIcon* props and select | `() => { }` | `func` |
+| rightIcon | customize component right, it is function return element of you and prop *clearValue* | `() => {}` | `func` |
+| clearValue | clear value of select when you use *rightIcon* props and select | | `func` |
+| customItem | customize select item use component of you, it is function return prop *(item, onPress)* | `null` | `func` |
 
 ## 4. Example
+
+### Ex1: Basic
 
 ```js
 // At the top of your file
@@ -81,6 +87,47 @@ export default class RNSelectExample extends Component {
           placeholder="Select lang"
           height={60}
           styleItem={itemCustom}
+        />
+      </View>
+    )
+  }
+}
+```
+
+### Ex2: Custom item
+
+```js
+// At the top of your file
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
+import RNSelect from 'react-native-select-awesome';
+
+const PERSONS = [
+  {id: 1, name: 'Alexander', value: 'alexander'},
+  {id: 2, name: 'Ethan', value: 'ethan'},
+  {id: 3, name: 'Daniel', value: 'daniel'},
+  {id: 4, name: 'Matthew', value: 'matthew'},
+  {id: 5, name: 'Joseph', value: 'joseph'},
+];
+
+// Later on in your component
+export default class RNSelectExample2 extends Component {
+  render() {
+    return(
+      <View>
+        <RNSelect 
+          datas={PERSONS}
+          placeholder="Select people"
+          label="name"
+          notFind="Opp... !"
+          styleNotFind={{ textAlign: 'center' }}
+          customItem={(item, onPress) => {
+            return (
+              <View style={{marginBottom: 10, backgroundColor: '#f00'}}>
+                <Text onPress={() => onPress(item)}>{item.name}</Text>
+              </View>
+            )
+          }}
         />
       </View>
     )

@@ -1,6 +1,7 @@
 {
-  "name": "Example for React Native Select Awesome",
-  "version": "0.0.1",
+  "name": "example-for-react-native-select-awesome",
+  "version": "0.0.2",
+  "description": "Example for React Native Select Awesome for Android and iOS",
   "private": true,
   "author": {
     "name": "TuanTVK",
