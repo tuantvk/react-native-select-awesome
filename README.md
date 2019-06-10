@@ -1,7 +1,8 @@
 # React Native Select Awesome - Library for React Native on platform Android and iOS
 
-![Demo](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_1.png)
-![Demo](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_2.png)
+![Demo 1](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_1.png)
+![Demo 2](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_2.png)
+![Demo 3](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_3.gif)
 
 # Table of Content
 
@@ -52,10 +53,10 @@ var RNSelect = require('react-native-select-awesome');
 | notFind | change the text displayed when no find value  | `Not Find` | `string` |
 | styleNotFind | style customize for text notFind | `{}` | `object` |
 | isDisabled | whether the input is disabled | `true` | `bool` |
-| selectValue | return value when you use *rightIcon* props and select | `() => { }` | `func` |
-| rightIcon | customize component right, it is function return element of you and prop *clearValue* | `() => {}` | `func` |
-| clearValue | clear value of select when you use *rightIcon* props and select | | `func` |
-| customItem | customize select item use component of you, it is function return prop *(item, onPress)* | `null` | `func` |
+| selectValue | return value when you use **rightIcon** props and select | `() => { }` | `func` |
+| rightIcon | customize component right, it is function return element of you and prop **clearValue** | `() => {}` | `func` |
+| clearValue | clear value of select when you use **rightIcon** props and select | | `func` |
+| customItem | customize select item use component of you, it is function return prop **(item, onPress)** | `null` | `func` |
 
 ## 4. Example
 
@@ -121,10 +122,10 @@ export default class RNSelectExample2 extends Component {
           label="name"
           notFind="Opp... !"
           styleNotFind={{ textAlign: 'center' }}
-          customItem={(item, onPress) => {
+          customItem={(item, _selectValue) => {
             return (
               <View style={{marginBottom: 10, backgroundColor: '#f00'}}>
-                <Text onPress={() => onPress(item)}>{item.name}</Text>
+                <Text onPress={() => _selectValue(item)}>{item.name}</Text>
               </View>
             )
           }}
