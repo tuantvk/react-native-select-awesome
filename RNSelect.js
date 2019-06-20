@@ -18,6 +18,7 @@ import {
   RightIcon,
   SelectItem,
   SelectItemCustom,
+  ScrollView,
 } from "./components";
 
 export class RNSelect extends React.PureComponent {
@@ -38,11 +39,13 @@ export class RNSelect extends React.PureComponent {
     height: 50,
     styleInput: {},
     styleItem: {},
-    stylePicker: {},
+    stylePicker: {
+      height: 250
+    },
     styleNotFind: {},
     notFind: 'Not find',
     selectValue: () => { },
-    rightIcon: () => { },
+    rightIcon: null,
     label: 'label',
     isDisabled: true,
     clearValue: () => { },
@@ -175,7 +178,9 @@ export class RNSelect extends React.PureComponent {
         </View>
         {isPicker &&
           <View style={[styles.picker, stylePicker]}>
-            {this._listSelect()}
+            <ScrollView>
+              {this._listSelect()}
+            </ScrollView>
           </View>
         }
       </View>
@@ -214,7 +219,7 @@ const styles = StyleSheet.create({
     borderColor: '#cacaca',
     borderWidth: 1,
     marginVertical: 5,
-    padding: 10
+    padding: 10,
   },
   item: {
     color: '#000',

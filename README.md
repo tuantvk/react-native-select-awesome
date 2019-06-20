@@ -1,8 +1,8 @@
 # React Native Select Awesome - Library for React Native on platform Android and iOS
 
-![Demo 1](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_1.png)
-![Demo 2](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_2.png)
-![Demo 3](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_3.gif)
+![View on Github 1](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_1.png)
+![View on Github 2](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_2.png)
+![View on Github 3](https://github.com/tuantvk/react-native-select-awesome/blob/master/assets/example_3.gif)
 
 # Table of Content
 
@@ -39,6 +39,8 @@ var RNSelect = require('react-native-select-awesome');
 
 ## 3. Props
 
+[Follow Style in React Native](https://facebook.github.io/react-native/docs/style)
+
 | Props  | Description | Default | PropTypes |
 | ------------- | ------------- | ------------- | ------------- |
 | datas | specify the options the user can select from | `[]` | `array` **isRequired** |
@@ -49,12 +51,12 @@ var RNSelect = require('react-native-select-awesome');
 | height | height of input | `50` | `number` |
 | styleInput | style customize for input | `{}` | `object` |
 | styleItem | style customize for item select | `{}` | `object` |
-| stylePicker | style customize container picker | `{}` | `object` |
+| stylePicker | style customize container picker | `{ height: 250 }` | `object` |
 | notFind | change the text displayed when no find value  | `Not Find` | `string` |
 | styleNotFind | style customize for text notFind | `{}` | `object` |
 | isDisabled | whether the input is disabled | `true` | `bool` |
 | selectValue | return value when you use **rightIcon** props and select | `() => { }` | `func` |
-| rightIcon | customize component right, it is function return element of you and prop **clearValue** | `() => {}` | `func` |
+| rightIcon | customize component right, it is function return element of you and prop **clearValue** | `null` | `func` |
 | clearValue | clear value of select when you use **rightIcon** props and select | | `func` |
 | customItem | customize select item use component of you, it is function return prop **(item, onPress)** | `null` | `func` |
 
